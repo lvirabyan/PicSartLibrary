@@ -1,0 +1,29 @@
+/* src/components/Footer/Footer.css */
+footer {
+    display: flex;
+    justify-content: space-around;
+    background-color: #333;
+    color: white;
+
+    padding: 20px;
+  }
+  
+  .column {
+    flex: 1;
+    max-width: 300px;
+  }
+  
+  a {
+    display: block;
+    margin-bottom: 8px;
+    font-size: 14px;
+    color: white;
+    text-decoration: none;
+    transition: color 0.3s, text-decoration 0.3s;
+  }
+  
+  a:hover {
+    color: #007bff;
+    text-decoration: underline;
+  }
+  

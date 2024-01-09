@@ -1,0 +1,41 @@
+body {
+    margin: 0;
+  }
+header {
+    background-color: #333;
+    color: white;
+    padding: 10px 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%; /* Set width to 100% */
+    margin: 0; /* Remove default margin */
+  }
+  
+  .logo img {
+    height: 50px; /* Adjust the height as needed */
+  }
+  
+  nav ul {
+    list-style: none;
+    display: flex;
+  }
+  
+  nav ul li {
+    margin-right: 16px;
+  }
+  
+  nav ul li a {
+    color: white;
+    text-decoration: none;
+    font-weight: bold;
+    font-size: 16px;
+    padding-right: 20px;
+    transition: color 0.3s, background-color 0.3s;
+  }
+  
+  nav ul li a:hover {
+    color: #fff;
+    background-color: #555;
+  }
+  

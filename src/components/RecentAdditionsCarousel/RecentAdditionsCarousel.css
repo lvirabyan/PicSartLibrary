@@ -1,0 +1,20 @@
+.recent-additions-carousel {
+    margin: 20px auto;
+    max-width: 800px; /* Adjust as needed */
+  }
+  
+  .carousel-item {
+    text-align: center;
+    cursor: pointer;
+  }
+  
+  .book-title {
+    color: #000; /* Initial color */
+    transition: color 0.3s, text-decoration 0.3s;
+  }
+  
+  .book-title:hover {
+    color: #007bff;
+    text-decoration: underline;
+  }
+  

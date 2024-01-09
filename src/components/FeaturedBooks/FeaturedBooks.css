@@ -1,0 +1,58 @@
+.recent-additions {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+  }
+  
+  .recent-additions h2 {
+    margin-bottom: 20px; /* Add space below the heading */
+  }
+  .books-container {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr); /* 3 columns */
+    gap: 20px; /* Adjust the gap between books */
+  }
+  
+  .book {
+    position: relative;
+    flex: 0 0 auto;
+    margin-right: 20px;
+  }
+  
+  
+  /* Adjust these styles based on your design preferences */
+  .book img {
+    width: 10vw /* Make sure images don't exceed their container */
+  }
+  
+  .book-title {
+    margin-top: 5px; /* Add space between image and title */
+    color: white;
+  }
+
+  .book-author {
+    margin-top: 5px; /* Add space between image and title */
+    color: white;
+  }
+  
+  /* Add styles for the Slider container if needed */
+  .recent-additions {
+    width: 10%; /* Adjust the width as needed */
+  }
+  /* src/components/Home/FeaturedBooks.css */
+
+
+  .view-all-button-container {
+    text-align: center;
+    margin-top: 20px;
+  }
+  
+  .view-all-button {
+    background-color: #007bff;
+    color: white;
+    font-size: 16px;
+    padding: 10px 20px;
+    border: none;
+    cursor: pointer;
+  }
