@@ -1,14 +1,30 @@
 import "./Sidebar.css"
-import FilterBy from "./FilterBy/FilterBy";
-import SearchInput from "../../SearchInput/SearchInput";
 
 function Sidebar({handleSelectedCategory}) {
-    console.log(handleSelectedCategory, "1111111 ")
+
   return (
+    <>
     <div>
-        <SearchInput/>
-        <FilterBy handleSelectedCategory = {handleSelectedCategory}/>
+      <h3>Filter By</h3>
+      <lable className="sidebar-lable-conteiner">
+        <input type="radio"/>
+        <span className="checkmark"></span> Title
+      </lable>
+      <lable className="sidebar-lable-conteiner"> 
+        <input type="radio"/>
+        <span className="checkmark"></span> Autors
+      </lable>
+      <lable className="sidebar-lable-conteiner"> 
+        <input type="radio"/>
+        <span className="checkmark"></span> Category
+      </lable>
     </div>
+        <input 
+          type="text"
+          className="search-input"
+          placeholder="Serch"
+        />
+    </>
   )
 }
 export default Sidebar;

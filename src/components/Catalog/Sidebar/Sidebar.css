@@ -1,0 +1,21 @@
+.search-input{
+    padding: 12px 20px;
+    border: none;
+    background: #f2f2f2;
+    outline: gray;
+    border: 1px solid gray;
+    border-radius: 5px;
+    position: relative;
+    width: 90%;
+}
+.sidebar-lable-conteiner {
+    display: flex;
+    position: relative;
+    padding-left: 35px;
+    margin-bottom: 12px;
+    cursor: pointer;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    user-select: none;
+}
+

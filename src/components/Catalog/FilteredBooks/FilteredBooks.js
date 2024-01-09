@@ -1,13 +1,16 @@
 import "./FilteredBooks.css"
-import Card  from "../../Card/Card.js"
+import Card from "../../Card/Card";
 
-function FilteredBooks({books}) {
-    console.log("111111", books);
+function FilteredBooks({result}) {
   return (
     <>
-    <section className="card-conteiner">
-        {books}
-    </section>
+    <>
+      <section className="card-container">
+        {result.map((el, i) => (
+          <Card book={el} key={i} />
+        ))}
+      </section>
+    </>
     </>
   )
 }

@@ -1,54 +1,27 @@
-/* Catalog.css */
+/* AppLayout.css */
 
-.catalog-container {
+.app-container {
   display: flex;
-  flex-direction: column;
-  align-items: center;
-  margin: auto;
-  max-width: 800px;
 }
 
-.filter-bar {
+.sidebar {
+  width: 200px;
+  padding: 20px;
+}
+
+
+.filtered-books {
   display: flex;
-  justify-content: center;
-  margin-bottom: 20px;
-}
-
-.filter-bar label {
-  margin-right: 20px;
-  font-size: 14px;
-}
-
-.search-bar {
-  width: 100%;
-  margin-bottom: 20px;
-}
-
-.search-bar input {
-  width: 100%;
-  padding: 10px;
-  border: 1px solid #ccc;
-  border-radius: 5px;
-  font-size: 160px;
-}
-
-.books-container {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  flex-wrap: wrap;
   gap: 20px;
+
 }
 
-.book {
-  border: 1px solid #ccc;
-  padding: 10px;
-  border-radius: 5px;
-  background-color: #fff;
+.card {
+  flex: 1 1 160px;
+
+  margin-bottom: 20px;
 }
 
-.book-title {
-  font-size: 16px;
-  font-weight: bold;
-  margin-bottom: 5px;
-}
 
-/* Add more styles as needed */
+

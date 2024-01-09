@@ -3,7 +3,7 @@ import './FeaturedBooks.css';
 
 const Book = ({ title, authors, thumbnail }) => (
   <div className="book">
-    <img src={`/images/${thumbnail}`} alt={title} />
+    <img src={`${thumbnail}`} alt={title} />
     <p className="book-title">{title}</p>
     <p className="book-author">{authors}</p>
   </div>

@@ -2,43 +2,78 @@ import Sidebar from "./Sidebar/Sidebar";
 import Data from "../Data/data.json"
 import FilteredBooks from "./FilteredBooks/FilteredBooks";
 import { useState } from "react";
-import Card from "../Card/Card";
+import Header from "./../Header/Header.js"
+import "./Catalog.css"
  function Catalog() {
-  const [selectedCategory, setSelectedCategory] = useState(null);
-  //input Filter
-  const [query, setQuery] =useState("");
-  const handleInputChange = event => {
-    setQuery(event.target.value);
-  }
+  // const [books, setBooks] = useState([]);
 
-  const filterdItems = Data.filter(book => book.title.toLocaleLowerCase().indexOf(query.toLocaleLowerCase()) !== -1);
+  // useEffect(() => {
+  //     fetch("http://localhost:3001/books/allbooks", {
+  //         method: 'GET',
+  //         credentials: 'include',
+  //         headers: {
+  //             'Content-Type': 'application/json'
+  //         }
+  //     })
+  //         .then((response) => {
+  //             return response.json()
+  //         })
+  //         .then((books) => {
+  //             setBooks(books);
+  //         }).catch((e) => {
+  //             console.log(e)
+  //         })
+  // }, [])
 
-  //radio Filter 
-  const handleSelectedCategory = event => {
-    setSelectedCategory(event.target.value)
-  }
-function FilteredBook (book, selected) {
-  let filteredBook = book;
-  if(query) {
-    filteredBook = filterdItems;
-  }
-  if(selected) {
-    filteredBook = filteredBook.filter(({title, authors, category}) => 
-      title === selected || authors === selected || category === selected
-    );
-  }
-  return filteredBook.map( (book, index )=> {
-    <Card index = {index} book = {book}/>
-  })
-} 
-const result = FilteredBook (Data, selectedCategory,query);
+  // let mainBook = books.slice(0, 3);
+  // console.log(mainBook);
 
+// const handleFilteredBook = 
+
+//   const [selectedCategory, setSelectedCategory] = useState(null);
+//   //input Filter
+//   const [query, setQuery] =useState("");
+//   const handleInputChange = event => {
+//     setQuery(event.target.value);
+//   }
+
+//   const filterdItems = Data.filter(book => book.title.toLocaleLowerCase().indexOf(query.toLocaleLowerCase()) !== -1);
+
+//   //radio Filter 
+//   const handleSelectedCategory = event => {
+//     setSelectedCategory(event.target.value)
+//   }
+// function FilteredBook (book, selected) {
+//   let filteredBook = book;
+//   if(query) {
+//     filteredBook = filterdItems;
+//   }
+
+//   if(selected) {
+//     filteredBook = filteredBook.filter(({title, authors, category}) => 
+//       title === selected || authors === selected || category === selected
+//     );
+//   }
+
+//   return filteredBook
+// } 
+// const result = FilteredBook (Data, selectedCategory,query);
   return (
-    <div>
-      <Card book= {Data[0]}/>
-      <Sidebar handleSelectedCategory = {handleSelectedCategory} handleInputChange = {handleInputChange} query = {query} />
-      <FilteredBooks result = {result}/>
+    <>
+    <Header/>
+    <div className="app-container">
+      <div className="sidebar">
+        <Sidebar
+          // handleSelectedCategory={handleSelectedCategory}
+          // handleInputChange={handleInputChange}
+          // query={query}
+        />
+      </div>
+      <div className="filtered-books">
+        {/* <FilteredBooks result={result} /> */}
+      </div>
     </div>
+    </>
   )
 }
 export default Catalog
