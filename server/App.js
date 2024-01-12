@@ -3,6 +3,7 @@ const mongoose = require("mongoose");
 const Book = require("./models/book");
 const app = express();
 const cors = require('cors');
+const auterRouter = require("./authRouter")
 
 const BookCntroler = require("./controllers/booksController");
 const port = 3003;
@@ -10,6 +11,11 @@ app.use(cors({
   origin: 'http://localhost:3000',
   credentials: true
 }))
+
+app.use("/auth", auterRouter);
+
+
+
 const mongoDB = async () => {
   try {
     const conn = await mongoose.connect("mongodb://localhost:27017/Library");
