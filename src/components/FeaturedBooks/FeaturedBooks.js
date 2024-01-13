@@ -1,9 +1,12 @@
 import React, { useState } from 'react';
 import './FeaturedBooks.css'; 
+import image from "../../images copy/1.png"
+import { Link } from 'react-router-dom';
+
 
 const Book = ({ title, authors, thumbnail }) => (
   <div className="book">
-    <img src={`${thumbnail}`} alt={title} />
+    <img src={image} alt={title} />
     <p className="book-title">{title}</p>
     <p className="book-author">{authors}</p>
   </div>
@@ -30,9 +33,12 @@ const FeaturedBooks = ({recentBooks}) => {
       </div>
       {visibleBooks < totalBooks && (
         <div className="view-all-button-container">
+          {/* <Link to="./catalog"> */}
           <button className="view-all-button" onClick={handleViewAllClick}>
             View More
           </button>
+          {/* </Link> */}
+          
         </div>
       )}
     </div>

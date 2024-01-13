@@ -3,16 +3,19 @@ const mongoose = require("mongoose");
 const Book = require("./models/book");
 const app = express();
 const cors = require('cors');
-const auterRouter = require("./authRouter")
+const AuterRouter = require("./authRouter")
 
 const BookCntroler = require("./controllers/booksController");
 const port = 3003;
+
+app.use(express.json());
+
 app.use(cors({
   origin: 'http://localhost:3000',
   credentials: true
 }))
 
-app.use("/auth", auterRouter);
+app.use("/auth", AuterRouter);
 
 
 
@@ -23,13 +26,11 @@ const mongoDB = async () => {
       `MongoDB connected: ${conn.connection.host}:${conn.connection.port}`
     );
   } catch (error) {
-    console.log(error, "aaaaaaaaaaaaaaaaaaaaa");
     process.exit(1);
   }
 };
 
 mongoDB();
-app.use(express.json());
 app.post("/api/books", async (req, res) => {
   try {
 

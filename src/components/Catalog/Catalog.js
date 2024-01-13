@@ -1,79 +1,104 @@
-import Sidebar from "./Sidebar/Sidebar";
-import Data from "../Data/data.json"
-import FilteredBooks from "./FilteredBooks/FilteredBooks";
-import { useState } from "react";
-import Header from "./../Header/Header.js"
-import "./Catalog.css"
- function Catalog() {
-  // const [books, setBooks] = useState([]);
+import "./Catalog.css";
+import React, { useState, useEffect } from "react";
+import { Link } from "react-router-dom";
+import image from "../../images copy/51xYxhz7xzL (1).jpg";
+import Header from "../Header/Header"
+import Footer from "../Footer/Footer"
 
-  // useEffect(() => {
-  //     fetch("http://localhost:3001/books/allbooks", {
-  //         method: 'GET',
-  //         credentials: 'include',
-  //         headers: {
-  //             'Content-Type': 'application/json'
-  //         }
-  //     })
-  //         .then((response) => {
-  //             return response.json()
-  //         })
-  //         .then((books) => {
-  //             setBooks(books);
-  //         }).catch((e) => {
-  //             console.log(e)
-  //         })
-  // }, [])
+export default function Catalog() {
+  const [searchTerm, setSearchTerm] = useState("");
+  const [displayedBooks, setDisplayedBooks] = useState([]);
+  const [totalBooks, setTotalBooks] = useState([]);
+  const [displayLimit, setDisplayLimit] = useState(6);
 
-  // let mainBook = books.slice(0, 3);
-  // console.log(mainBook);
+  useEffect(() => {
+    fetch("http://localhost:3003/book/allbooks", {
+      method: 'GET',
+      credentials: 'include',
+      headers: {
+        'Content-Type': 'application/json'
+      }
+    })
+    .then((response) => response.json())
+    .then((books) => {
+      setTotalBooks(books);
+      setDisplayedBooks(books.slice(0, displayLimit));
+    })
+    .catch((e) => console.log(e));
+  }, [displayLimit]);
 
-// const handleFilteredBook = 
+  const handleSearch = (e) => {
+    setSearchTerm(e.target.value);
+    let filteredBooks = totalBooks.filter((book) => {
+      return book.title.toLowerCase().includes(searchTerm.toLowerCase());
+    });
+    setDisplayedBooks(filteredBooks.slice(0, displayLimit));
+  };
 
-//   const [selectedCategory, setSelectedCategory] = useState(null);
-//   //input Filter
-//   const [query, setQuery] =useState("");
-//   const handleInputChange = event => {
-//     setQuery(event.target.value);
-//   }
+  const handleMoreBooks = () => {
+    setDisplayLimit((prevDisplayLimit) => prevDisplayLimit + 6);
+  };
 
-//   const filterdItems = Data.filter(book => book.title.toLocaleLowerCase().indexOf(query.toLocaleLowerCase()) !== -1);
+  const filterBooks = (e) => {
+    if (e.target.value === "Reset filters") {
+      setDisplayLimit(6);
+    } else if (e.target.value === "All books") {
+      setDisplayLimit(totalBooks.length);
+    } else {
+      let filteredBooks = totalBooks.filter((book) =>
+        book.category.includes(e.target.value)
+      );
+      setDisplayedBooks(filteredBooks.slice(0, displayLimit));
+    }
+  };
 
-//   //radio Filter 
-//   const handleSelectedCategory = event => {
-//     setSelectedCategory(event.target.value)
-//   }
-// function FilteredBook (book, selected) {
-//   let filteredBook = book;
-//   if(query) {
-//     filteredBook = filterdItems;
-//   }
-
-//   if(selected) {
-//     filteredBook = filteredBook.filter(({title, authors, category}) => 
-//       title === selected || authors === selected || category === selected
-//     );
-//   }
-
-//   return filteredBook
-// } 
-// const result = FilteredBook (Data, selectedCategory,query);
   return (
     <>
     <Header/>
-    <div className="app-container">
-      <div className="sidebar">
-        <Sidebar
-          // handleSelectedCategory={handleSelectedCategory}
-          // handleInputChange={handleInputChange}
-          // query={query}
-        />
+      <div className="mainCatalog">
+        <div className="search-bar">
+          <form className="form">
+            <div>
+              <label htmlFor="search" className="label"></label>
+              <input
+                type="text"
+                id="search"
+                onChange={handleSearch}
+                className="input"
+                placeholder="Type to search"
+              />
+            </div>
+          </form>
+          <div className="forButton">
+            <h4>Filter Options</h4>
+            <div><button onClick={filterBooks} value={"All books"}>All books</button></div>
+            <div><button onClick={filterBooks} value={"Fiction"}>Fiction</button></div>
+            <div><button onClick={filterBooks} value={"Non Fiction"}>Non Fiction</button></div>
+            <div><button onClick={filterBooks} value={"Biography"}>Biography</button></div>
+            <div><button onClick={filterBooks} value={"History"}>History</button></div>
+          </div>
+          <button className="reset-filters" onClick={filterBooks} value={"Reset filters"}>Reset filters</button>
+        </div>
+        <div className="all-books">
+          <div className="main">
+            {displayedBooks.map((item, index) => (
+              <div className="books" key={index}>
+                <Link to={`/${item.isbn}`}>
+                  <img src={image} alt="" />
+                </Link>
+                <div className="product-info">
+                  <h2>{item.title}</h2>
+                  <p>{item.authors[0]}</p>
+                </div>
+              </div>
+            ))}
+            <div className="ViewAll">
+              <button onClick={handleMoreBooks}>View More</button>
+            </div>
+          </div>
+        </div>
       </div>
-      <div className="filtered-books">
-        {/* <FilteredBooks result={result} /> */}
-      </div>
-    </div>
+      <Footer/>
     </>
-  )
+  );
 }
-export default Catalog

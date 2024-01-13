@@ -39,3 +39,21 @@
   max-width: 800px; /* Adjust the maximum width as needed */
   margin: 0 auto; /* Center the container */
 }
+.sliderContainer {
+  position: absolute;
+  margin-top: 50%;
+  top: 40%; 
+  /* transform: translate(-50%, -50%); */
+  z-index: 2;
+}
+.sliderimg {
+  width: 100px;
+  height: auto;
+}
+.imgDiv{
+  gap:10px;
+
+  width: 70px;
+  height: 100px;
+  background-color: aqua;
+}

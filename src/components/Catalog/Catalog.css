@@ -1,27 +1,135 @@
-/* AppLayout.css */
+/* Catalog.css */
 
-.app-container {
+.mainCatalog {
   display: flex;
+  justify-content: space-between;
 }
 
-.sidebar {
-  width: 200px;
+.search-bar {
+  min-width: 250px;
   padding: 20px;
+  background-color: #f2f2f2;
+  border-radius: 8px;
 }
 
-
-.filtered-books {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 20px;
-
+.input {
+  width: 100%;
+  padding: 2px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  margin-top: 10px;
 }
 
-.card {
-  flex: 1 1 160px;
-
+.form {
   margin-bottom: 20px;
 }
 
+.forButton {
+  margin-top: 20px;
+}
 
+.forButton h4 {
+  font-size: 18px;
+  margin-bottom: 10px;
+}
 
+.forButton button {
+  background-color: darkmagenta;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  padding: 10px 15px;
+  margin-bottom: 10px;
+  cursor: pointer;
+  transition: background-color 0.3s ease-in-out;
+
+  &:hover {
+    background-color:rgb(240, 89, 240)
+  }
+}
+
+.reset-filters {
+  background-color: #fff;
+  color: darkmagenta;
+  border: 1px solid darkmagenta;
+  border-radius: 5px;
+  padding: 10px 15px;
+  cursor: pointer;
+  transition: background-color 0.3s ease-in-out, color 0.3s ease-in-out;
+
+  &:hover {
+    background-color:rgb(240, 89, 240);
+    color: #fff;
+  }
+}
+
+.all-books {
+  flex: 1;
+  padding: 20px;
+  max-height: 90vh;
+  overflow: auto;
+}
+
+.main {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+}
+
+.books {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: #ffffff51;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease-in-out;
+
+  &:hover {
+    transform: scale(1.05);
+  }
+
+  img {
+    width: 100%;
+    max-height: 200px;
+    object-fit: cover;
+    border-radius: 8px;
+    margin-bottom: 10px;
+  }
+
+  .product-info {
+    text-align: center;
+  }
+
+  h2 {
+    font-size: 18px;
+    margin-bottom: 5px;
+  }
+
+  p {
+    font-size: 14px;
+    color: #555;
+    margin-bottom: 10px;
+  }
+}
+
+.ViewAll {
+  text-align: center;
+  margin-top: 20px;
+}
+
+.ViewAll button {
+  background-color:darkmagenta;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  padding: 10px 15px;
+  cursor: pointer;
+  transition: background-color 0.3s ease-in-out;
+
+  &:hover {
+  background-color:rgb(240, 89, 240);
+
+  }
+}
