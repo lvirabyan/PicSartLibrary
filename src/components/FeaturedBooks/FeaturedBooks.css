@@ -1,58 +1,93 @@
+/* src/components/Home/Home.css */
+
+/* Styles for the Recent Additions Section */
 .recent-additions {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  width: 100%; /* Adjust the width as needed */
+  margin-top: 50px;
+}
+
+.recent-additions h2 {
+  margin-bottom: 20px; /* Add space below the heading */
+}
+
+/* Styles for the Books Container */
+.books-container {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr); /* 3 columns */
+  gap: 20px; /* Adjust the gap between books */
+}
+
+/* Styles for Individual Books */
+.books {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: #ffffff51;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease-in-out;
+
+  &:hover {
+    transform: scale(1.05);
+  }
+
+  .product-info {
     text-align: center;
   }
-  
-  .recent-additions h2 {
-    margin-bottom: 20px; /* Add space below the heading */
+
+  p {
+    font-size: 14px;
+    color: #555;
+    margin-bottom: 10px;
   }
-  .books-container {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr); /* 3 columns */
-    gap: 20px; /* Adjust the gap between books */
+
+  img {
+    width: 100%; /* Make the image responsive within its container */
+    max-height: 200px;
+    object-fit: cover;
+    border-radius: 8px;
+    margin-bottom: 10px;
   }
-  
-  .book {
-    position: relative;
-    flex: 0 0 auto;
-    margin-right: 20px;
-  }
-  
-  
-  /* Adjust these styles based on your design preferences */
-  .book img {
-    width: 10vw /* Make sure images don't exceed their container */
-  }
-  
+
   .book-title {
+    font-size: 20px;
     margin-top: 5px; /* Add space between image and title */
-    color: white;
   }
 
   .book-author {
     margin-top: 5px; /* Add space between image and title */
-    color: white;
   }
-  
-  /* Add styles for the Slider container if needed */
-  .recent-additions {
-    width: 10%; /* Adjust the width as needed */
-  }
-  /* src/components/Home/FeaturedBooks.css */
+}
 
+/* Styles for the Slider container if needed */
+/* .recent-additions {
+  width: 10%; // Commented out as it might be redundant
+} */
 
-  .view-all-button-container {
-    text-align: center;
-    margin-top: 20px;
+/* src/components/Home/FeaturedBooks.css */
+
+/* Styles for the View All Button Container */
+.view-all-button-container {
+  text-align: center;
+  margin-top: 20px;
+}
+
+/* Styles for the View All Button */
+.view-all-button-container button {
+  background-color: darkmagenta;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  padding: 10px 15px;
+  cursor: pointer;
+  transition: background-color 0.3s ease-in-out;
+
+  &:hover {
+    background-color: rgb(240, 89, 240);
   }
-  
-  .view-all-button {
-    background-color: #007bff;
-    color: white;
-    font-size: 16px;
-    padding: 10px 20px;
-    border: none;
-    cursor: pointer;
-  }
+}

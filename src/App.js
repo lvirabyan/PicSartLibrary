@@ -4,6 +4,7 @@ import Home  from './components/Home/Home';
 import Catalog from './components/Catalog/Catalog';
 import LoginRegister from './components/Login/Login';
 import Registration from "./components/Login/Registration"
+import UserPage from "./components/Login/User"
 
 function App() {
   return (
@@ -14,6 +15,8 @@ function App() {
           <Route path="/catalog" element={<Catalog />} />
           <Route path="/login" element={<LoginRegister />} />
           <Route path="/registration" element={<Registration />} />
+          <Route path="/userPage" element={<UserPage />} />
+
         </Routes>
       </div>
     </Router>

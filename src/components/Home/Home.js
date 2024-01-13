@@ -11,45 +11,43 @@ import 'slick-carousel/slick/slick-theme.css';
 
 const Home = () => {
   const [books, setBooks] = useState([]);
-
-    useEffect(() => {
-        fetch("http://localhost:3003/book/allbooks", {
-            method: 'GET',
-            credentials: 'include',
-            headers: {
-                'Content-Type': 'application/json'
-            }
-        })
-            .then((response) => {
-                return response.json()
-            })
-            .then((books) => {
-                setBooks(books);
-            }).catch((e) => {
-                console.log(e)
-            })
-    }, [])
-    const CustomPrevArrow = (props) => {
-      const { className, onClick } = props;
-      return <div className={`${className} custom-arrow prev`} onClick={onClick}></div>;
+  useEffect(() => {
+    let isMounted = true;
+  
+    const fetchData = async () => {
+      try {
+        const response = await fetch("http://localhost:3003/book/allbooks", {
+          method: 'GET',
+          credentials: 'include',
+          headers: {
+            'Content-Type': 'application/json'
+          }
+        });
+  
+        if (!isMounted) {
+          return; // Avoid updating state if component is unmounted
+        }
+  
+        if (!response.ok) {
+          throw new Error('Network response was not ok');
+        }
+  
+        const booksData = await response.json();
+        setBooks(booksData);
+      } catch (error) {
+        console.error('Error fetching books:', error);
+      }
     };
-    const CustomNextArrow = (props) => {
-      const { className, onClick } = props;
-      return <div className={`${className} custom-arrow next`} onClick={onClick}></div>;
+  
+    fetchData();
+  
+    return () => {
+      // Cleanup function to set isMounted to false when the component is unmounted
+      isMounted = false;
     };
-    const settings = {
-      dots: true,
-      infinite: true,
-      speed: 500,
-      slidesToShow: 5,
-      slidesToScroll: 1,
-      centerMode: true,
-      centerPadding: '0',
-      prevArrow: <CustomPrevArrow />,
-      nextArrow: <CustomNextArrow />,
-    };
-    const  mainBook = books.slice(0, 3);
-    console.log(mainBook);
+  }, []);
+  
+   
   return (
     <>
       <Header/>
@@ -60,33 +58,6 @@ const Home = () => {
           <lider/>
             <FeaturedBooks recentBooks={books}/>
         </div>
-        <div className="recent-additions">
-          <h2>Recent Additions</h2>
-          <Slider {...settings}>
-            {mainBook.map((book) => (
-              <div key={book.isbn}>
-                <div className='imgDiv' key={book.id}>
-                  <p>hsdbfsdhjgfkjsdffgkjfhgkjdfhghdjf</p>
-                  <img src={image} className="sliderimg" alt={book.title} />
-                </div>
-              </div>
-            ))}
-          </Slider>
-    </div>
-        {/* <div className="sliderContainer"> */}
-        {/* <AliceCarousel
-          autoPlayInterval={3000}
-          dotsDisabled={false}
-          items={books.slice(0,3).map((book) => (
-            <div className='imgDiv' key={book.id}>
-              <img src={image} className="sliderimg" alt={book.title} />
-            </div>
-          ))}
-        />
-      </div> */}
-      <div className="bookCount">
-        <p>Total Books: {books.length}</p>
-      </div>
       </div>
       <Footer/>
     </>

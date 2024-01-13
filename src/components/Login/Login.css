@@ -1,21 +1,31 @@
-.conteiner{
-    display: flex;
-    flex-direction: column;
-    margin: 6% auto;
-    padding-bottom: 30px;
-    border: 1px solid gray;
-    border-radius: 5px;
-    max-width: 400px;
-    
-}
 .header{
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 9px;
-    width: 400px;
-    margin-top: 30px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 9px;
+  width: 400px;
+  margin-top: 30px;
 }
+body {
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+.mainconteiner {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+.container {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
 
 .text{
     color: darkmagenta;
@@ -28,11 +38,9 @@
     background-color: #f2f2f2;
     border-radius: 5px;
 }
-.inputs{
-    margin-top: 55px;
-    display: flex;
-    flex-direction: column;
-    gap: 25px;
+.inputs {
+  width: 100%;
+  max-width: 300px; /* Adjust the max-width as needed */
 }
 .input{
  display: flex;
@@ -103,5 +111,22 @@
   .gray{
     background-color: #f2f2f2;
     color: gray;
+  }
+  
+  .submit-button {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color:darkmagenta;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    padding: 10px 15px;
+    cursor: pointer;
+    transition: background-color 0.3s ease-in-out;
+
+    &:hover {
+      background-color:rgb(240, 89, 240); 
+      }
   }
   

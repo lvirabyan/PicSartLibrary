@@ -7,7 +7,7 @@ import "./Login.css"; // Add your CSS styles here
 
 const LoginRegister = () => {
   const [formData, setFormData] = useState({
-    email: '',
+    useremail: '',
     password: '',
   });
   const [error, setError] = useState(null);
@@ -19,7 +19,7 @@ const LoginRegister = () => {
   const handleChange = (e) => {
     const { name, value } = e.target;
     setFormData((prevData) => ({ ...prevData, [name]: value }));
-    if (name === 'email') {
+    if (name === 'useremail') {
       setEmailError('');
     } else if (name === 'password') {
       setPasswordError('');
@@ -30,18 +30,22 @@ const LoginRegister = () => {
         e.preventDefault();
         try {
           const response = await fetch("http://localhost:3003/auth/login", {
-            method: 'POST',
-            headers: {
-              'Content-Type': 'application/json',
-            },
-            body: JSON.stringify(formData),
-          });
+              method: 'POST',
+              headers: {
+                'Content-Type': 'application/json',
+              },
+              body: JSON.stringify({
+                useremail: formData.email,
+                password: formData.password,
+              }),
+            });
+
     
           if (response.status === 200) {
             const data = await response.json();
             localStorage.setItem('token', data.accessToken);
             localStorage.setItem('refreshtoken', data.refreshToken);
-            navigate('/userPage');
+            navigate('/userPage', { state: { user: data.user } });
             window.location.reload();
           } else {
             const data = await response.json();
@@ -68,8 +72,8 @@ const LoginRegister = () => {
   };
 
   return (
-    <>
-      <HeaderLogin />
+    <div className="mainconteiner">
+    <HeaderLogin />
       <div className="container">
         <div className="header">
           <div className="text">{action}</div>
@@ -123,7 +127,7 @@ const LoginRegister = () => {
         {error && <div className="error-message-field">{error}</div>}
       </div>
       <FooterLogin />
-    </>
+    </div>
   );
 }
 

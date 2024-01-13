@@ -1,0 +1,11 @@
+
+.userPage-conteiner{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.userPage-conteiner h1{
+    font-size: 25px;
+    color: darkmagenta
+    
+}

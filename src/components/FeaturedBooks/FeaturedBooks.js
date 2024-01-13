@@ -5,7 +5,7 @@ import { Link } from 'react-router-dom';
 
 
 const Book = ({ title, authors, thumbnail }) => (
-  <div className="book">
+  <div className="books">
     <img src={image} alt={title} />
     <p className="book-title">{title}</p>
     <p className="book-author">{authors}</p>
@@ -33,11 +33,11 @@ const FeaturedBooks = ({recentBooks}) => {
       </div>
       {visibleBooks < totalBooks && (
         <div className="view-all-button-container">
-          {/* <Link to="./catalog"> */}
-          <button className="view-all-button" onClick={handleViewAllClick}>
+          <Link to="./catalog">
+          <button className="ViewAll" onClick={handleViewAllClick}>
             View More
           </button>
-          {/* </Link> */}
+          </Link>
           
         </div>
       )}

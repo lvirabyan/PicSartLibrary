@@ -18,7 +18,7 @@ class AuthController {
         try {
 const {validationResult} = require("express-validator")
             const errors = validationResult(req);
-            console.log(req.body.username)
+            console.log(req.body)
             if(!errors.isEmpty()){
                 return res.status(400).json({message: "Error during registration.", errors})
             }
@@ -41,9 +41,10 @@ const {validationResult} = require("express-validator")
     }
     async login (req, res) {
         try {
-            console.log(req.body);
+            console.log(req.body,"body");
             const  {username, password, useremail} = req.body;
             const user = await User.findOne({useremail})
+            console.log(user,"user");
 
             if(!user) {
                 return res.status(400).json({message: `User ${username} not found.`})
@@ -58,7 +59,7 @@ const {validationResult} = require("express-validator")
 
             }
             const token = generationAcssesToken(user.username, user.useremail, user.roles);
-
+            console.log(token);
             return  res.json(token)
         }catch(e){
             console.log(e);

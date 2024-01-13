@@ -1,13 +1,12 @@
-/* src/components/Home/Home.css */
 
+/* Banner Styles */
 .banner-container {
   position: relative;
-  height: 100vh; /* Adjust the height as needed */
+  height: 100vh;
   background: url('../../../public/images/1.png') center/cover no-repeat;
   display: flex;
   align-items: center;
   justify-content: center;
-  position: relative; /* Ensure position is relative for absolute positioning of overlay */
 }
 
 .banner-overlay {
@@ -16,44 +15,21 @@
   left: 0;
   width: 100%;
   height: 100%;
-  height: 100%;
   background: rgba(255, 255, 255, 0.5);
   display: flex;
   flex-direction: column;
-  align-items: center;
   justify-content: flex-start;
   align-items: center;
-  color: #fff;
   text-align: center;
 }
 
 .banner-heading {
   font-size: 48px;
-  margin-top: px; /* Add margin to separate heading and subheading */
+  margin-top: 20px; /* Adjust as needed for separation */
 }
 
 .banner-subheading {
   font-size: 24px;
 }
-.featured-books-container {
-  max-width: 800px; /* Adjust the maximum width as needed */
-  margin: 0 auto; /* Center the container */
-}
-.sliderContainer {
-  position: absolute;
-  margin-top: 50%;
-  top: 40%; 
-  /* transform: translate(-50%, -50%); */
-  z-index: 2;
-}
-.sliderimg {
-  width: 100px;
-  height: auto;
-}
-.imgDiv{
-  gap:10px;
 
-  width: 70px;
-  height: 100px;
-  background-color: aqua;
-}
+
